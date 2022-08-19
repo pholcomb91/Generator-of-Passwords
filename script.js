@@ -1,17 +1,24 @@
 var passChars= '';
+
 //determine length of password
 
 
 function displayPasswordLengthPrompt() {
   let passLength = prompt("How long would you like your password to be?",8);
-  if (passLength< 8 || passLength> 128) {
-  } else { 
+  console.log("my password length", passLength)
+  if ((passLength>= 8) && (passLength<= 128)) {
+    
+  } else {
     alert("Must be a number between 8 and 128");
+    
   }
-  //this needs to loop?<-------------------------------------------------*/
-  
+  console.log (passLength);
   return passLength;
 }
+  //this needs to loop?<-------------------------------------------------*/
+ 
+  
+
 //This is returning whether or not they want to include Upper Case characters
 function displayUpperCasePrompt() {
   let passUpperCase=confirm("Would you like to include Upper Case letters? Click cancel for NO")
@@ -60,19 +67,28 @@ function displaySpecialCharactersPrompt() {
   console.log(passChars);
   return passSpecialCharacters;
 }
+// entry point
 function displayContent() {
-  //document.getElementByClassName("btn").style.background-color="blue";<------------try
-  displayPasswordLengthPrompt();
+  //This runs the below functions
+  let passLength = displayPasswordLengthPrompt();
   displayUpperCasePrompt();
   displayLowerCasePrompt();
   displayNumbersPrompt();
   displaySpecialCharactersPrompt();
+  //this spits out the password using the given parameters
+  var password = '';
+  console.log("passLength", passLength)
+  for (var i = 0; i <= passLength; i++) {
+    var randomNumber = Math.floor(Math.random() * passChars.length);
+    console.log ("random num= ", randomNumber);
+    password += passChars.substring(randomNumber, randomNumber +1);
+  }
+   console.log("password=", password);
+   document.getElementById("password").innerHTML = password;
+
 }
-/*for (var i = 0; i <= passLength; i++) {-------------------------------------------
-  var randomNumber = Math.floor(Math.random() * passLength);
-  password += chars.substring(randomNumber, randomNumber +1);
- }
- return password
+  
+
 //2 show text field
 
 //3 get button on prompt (gen password btn to take variable and insert it.)
