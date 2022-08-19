@@ -1,17 +1,14 @@
-
 var passChars= '';
 
 //determines length of password
 function displayPasswordLengthPrompt() {
   let passLength = prompt("How long would you like your password to be?",8);
-  console.log("my password length", passLength)
   if ((passLength>= 8) && (passLength<= 128)) {
     
   } else {
     alert("Must be a number between 8 and 128");
     passLength=8;
   }
-  console.log (passLength);
   return passLength;
 }
 
@@ -23,9 +20,7 @@ function displayUpperCasePrompt() {
     alert("GOT IT, THANKS.")
     } else {
       alert("no capitals will be included.")
-      passChars='';
     }
-  console.log (passChars)
   return passUpperCase;
 }
 
@@ -38,7 +33,6 @@ function displayLowerCasePrompt() {
     } else {
       alert("NO LOWER CASE LETTERS WILL BE INCLUDED.")
     }
-    console.log (passChars);
   return passLowerCase;
 }
 
@@ -51,7 +45,6 @@ function displayNumbersPrompt() {
     } else {
       alert("Not even one number will be included.")
     }
-    console.log (passChars);
   return passNumbers;
 }
 
@@ -64,7 +57,6 @@ function displaySpecialCharactersPrompt() {
     } else {
       alert("lame characters only.")
     }
-  console.log(passChars);
   return passSpecialCharacters;
 }
 
@@ -78,13 +70,10 @@ function displayContent() {
   displaySpecialCharactersPrompt();
   //this spits out the password using the given parameters
   var password = '';
-  console.log("passLength", passLength)
   for (var i = 0; i <= passLength-1; i++) {
     var randomNumber = Math.floor(Math.random() * passChars.length);
-    console.log ("random num= ", randomNumber);
     password += passChars.substring(randomNumber, randomNumber +1);
   }
-   console.log("password=", password);
    document.getElementById("password").innerHTML = password;
 
 }
